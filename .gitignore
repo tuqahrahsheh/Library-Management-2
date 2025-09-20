@@ -1,0 +1,16 @@
+# .NET build output
+**/bin/
+**/obj/
+.vs/
+
+# IDE
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Node (للواجهة لاحقاً)
+node_modules/
+
+# Secrets
+*.env
