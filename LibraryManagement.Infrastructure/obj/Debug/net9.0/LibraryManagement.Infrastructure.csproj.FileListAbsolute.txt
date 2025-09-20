@@ -14,3 +14,5 @@ C:\Users\USER\OneDrive\Desktop\Library-Management-2\LibraryManagement.Infrastruc
 C:\Users\USER\OneDrive\Desktop\Library-Management-2\LibraryManagement.Infrastructure\obj\Debug\net9.0\refint\LibraryManagement.Infrastructure.dll
 C:\Users\USER\OneDrive\Desktop\Library-Management-2\LibraryManagement.Infrastructure\obj\Debug\net9.0\LibraryManagement.Infrastructure.pdb
 C:\Users\USER\OneDrive\Desktop\Library-Management-2\LibraryManagement.Infrastructure\obj\Debug\net9.0\ref\LibraryManagement.Infrastructure.dll
+C:\Users\USER\OneDrive\Desktop\Library-Management-2\LibraryManagement.Infrastructure\bin\Debug\net9.0\LibraryManagement.Infrastructure.runtimeconfig.json
+C:\Users\USER\OneDrive\Desktop\Library-Management-2\LibraryManagement.Infrastructure\obj\Debug\net9.0\LibraryManagement.Infrastructure.genruntimeconfig.cache
