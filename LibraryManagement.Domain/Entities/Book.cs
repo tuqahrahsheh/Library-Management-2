@@ -1,10 +1,11 @@
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace LibraryManagement.Domain.Entities
 {
     public class Book
     {
-        public int Id { get; set; }
+        public int BookId { get; set; }
 
         [Required, StringLength(200)]
         public string Title { get; set; } = string.Empty;
@@ -15,9 +16,13 @@ namespace LibraryManagement.Domain.Entities
         [StringLength(13)]
         public string? ISBN { get; set; }
 
+        [Column("PublishedYear")]
+        public int? PublishedYear { get; set; }
+        [NotMapped]
         public DateTime? PublishedDate { get; set; }
 
-        public int Quantity { get; set; }
+        [NotMapped]
+        public int Quantity { get; set; } = 0;
 
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
         public DateTime? UpdatedAt { get; set; }

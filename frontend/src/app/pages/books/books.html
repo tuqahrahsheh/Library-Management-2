@@ -1,0 +1,49 @@
+<mat-card class="card">
+  <h2>Books</h2>
+
+  <div class="grid">
+    <mat-form-field appearance="outline"><mat-label>Title</mat-label><input matInput [(ngModel)]="title"></mat-form-field>
+    <mat-form-field appearance="outline"><mat-label>Author</mat-label><input matInput [(ngModel)]="author"></mat-form-field>
+    <mat-form-field appearance="outline"><mat-label>ISBN</mat-label><input matInput [(ngModel)]="isbn"></mat-form-field>
+    <mat-form-field appearance="outline"><mat-label>Published Date</mat-label><input type="date" matInput [(ngModel)]="publishedDate"></mat-form-field>
+    <mat-form-field appearance="outline"><mat-label>Quantity</mat-label><input type="number" min="1" matInput [(ngModel)]="quantity"></mat-form-field>
+    <mat-form-field appearance="outline"><mat-label>Category Ids (comma)</mat-label><input matInput [(ngModel)]="categoryIdsCsv"></mat-form-field>
+
+    <div class="actions">
+      <button *ngIf="selectedId === null" mat-raised-button color="primary" (click)="add()" [disabled]="loading()">Add Book</button>
+      <ng-container *ngIf="selectedId !== null">
+        <button mat-raised-button color="primary" (click)="update()" [disabled]="loading()">Save Changes</button>
+        <button mat-button (click)="cancelEdit()" [disabled]="loading()">Cancel</button>
+      </ng-container>
+    </div>
+  </div>
+
+  <mat-progress-bar *ngIf="loading()" mode="indeterminate"></mat-progress-bar>
+
+  <div class="table-wrap" *ngIf="rows().length; else empty">
+    <table mat-table [dataSource]="rows()">
+      <ng-container matColumnDef="id"><th mat-header-cell *matHeaderCellDef>Id</th><td mat-cell *matCellDef="let r">{{r.id}}</td></ng-container>
+      <ng-container matColumnDef="title"><th mat-header-cell *matHeaderCellDef>Title</th><td mat-cell *matCellDef="let r">{{r.title}}</td></ng-container>
+      <ng-container matColumnDef="author"><th mat-header-cell *matHeaderCellDef>Author</th><td mat-cell *matCellDef="let r">{{r.author}}</td></ng-container>
+      <ng-container matColumnDef="isbn"><th mat-header-cell *matHeaderCellDef>ISBN</th><td mat-cell *matCellDef="let r">{{r.isbn}}</td></ng-container>
+      <ng-container matColumnDef="publishedDate"><th mat-header-cell *matHeaderCellDef>Published</th><td mat-cell *matCellDef="let r">{{r.publishedDate | date:'yyyy-MM-dd'}}</td></ng-container>
+      <ng-container matColumnDef="categoryIds"><th mat-header-cell *matHeaderCellDef>Categories</th><td mat-cell *matCellDef="let r">{{r.categoryIds?.join(', ')}}</td></ng-container>
+
+      <!-- Actions -->
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef>Actions</th>
+        <td mat-cell *matCellDef="let r">
+          <!-- استخدم أزرار نصية لتجنب اعتماد الأيقونات -->
+          <button mat-stroked-button color="primary" (click)="edit(r)">Edit</button>
+          <button mat-stroked-button color="warn" (click)="remove(r)">Delete</button>
+        </td>
+      </ng-container>
+
+      <!-- نُسقّت الأعمدة هنا كقائمة ثابتة لضمان ظهور actions -->
+      <tr mat-header-row *matHeaderRowDef="['id','title','author','isbn','publishedDate','categoryIds','actions']"></tr>
+      <tr mat-row *matRowDef="let row; columns: ['id','title','author','isbn','publishedDate','categoryIds','actions'];"></tr>
+    </table>
+  </div>
+
+  <ng-template #empty><div class="empty"><p>No books yet.</p></div></ng-template>
+</mat-card>

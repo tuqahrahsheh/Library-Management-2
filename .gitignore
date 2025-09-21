@@ -9,8 +9,15 @@
 *.userosscache
 *.sln.docstates
 
-# Node (للواجهة لاحقاً)
 node_modules/
 
 # Secrets
 *.env
+
+# Frontend build artifacts
+/frontend/node_modules/
+/frontend/dist/
+/frontend/.angular/
+
+
+
